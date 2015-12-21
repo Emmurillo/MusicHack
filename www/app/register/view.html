@@ -1,0 +1,27 @@
+<ion-view view-title="New User">
+  <ion-content class="padding">
+    <form ng-submit="vm.createAccount()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="vm.user.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="vm.user.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="vm.user.password">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Confirm Password</span>
+          <input type="password" ng-model="vm.user.passwordConfirm">
+        </label>
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit">Create Account</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

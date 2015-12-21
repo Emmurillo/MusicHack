@@ -1,0 +1,20 @@
+<ion-view view-title="Log In">
+  <ion-content class="padding">
+    <form ng-submit="vm.authenticate()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="vm.user.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="vm.user.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-dark" type="submit">Log In</button>
+          <button class="button button-block button-positive icon-left ion-social-facebook" type="submit">Facebook</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
