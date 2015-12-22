@@ -16,6 +16,14 @@ In order to setup your development environment.
 
 > Check out the [Ionic's Documentation](http://ionicframework.com/getting-started/)
 
+## Running Application
+
+For development environments `ionic serve [--lab]` will inject environment vars to the project and launch the app into the browser.
+
+It's **VERY IMPORTANT** to run `gulp dev`, `gulp test_env` or `gulp prod` before `ionic build` or `ionic emulate` the application on real devices in order to enable environment vars as automatic injection only works for `ionic serve [--lab]` task.
+
+> Default task is `dev` and could be changed under `ionic.project -> gulpDependantTasks`
+
 ### Unit testing
 
 Run your tests using:

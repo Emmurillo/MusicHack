@@ -4,6 +4,7 @@
   angular
     .module('musicHack', [
       'ionic',
+      'firebase',
 
       'musicHack.login',
       'musicHack.auth',

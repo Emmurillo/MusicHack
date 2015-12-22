@@ -7,10 +7,29 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var karma = require('karma');
+var preprocess = require('gulp-preprocess');
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
+
+gulp.task('dev', function() {
+  gulp.src('./environment/envSettings.js')
+    .pipe(preprocess({context: { ENV: 'DEVELOPMENT', DEBUG: true}}))
+    .pipe(gulp.dest('./www/app/'));
+});
+
+gulp.task('test_env', function() {
+  gulp.src('./environment/envSettings.js')
+    .pipe(preprocess({context: { ENV: 'TEST', DEBUG: true}}))
+    .pipe(gulp.dest('./www/app/'));
+});
+
+gulp.task('prod', function() {
+  gulp.src('./environment/envSettings.js')
+    .pipe(preprocess({context: { ENV: 'PRODUCTION'}}))
+    .pipe(gulp.dest('./www/app/'));
+});
 
 gulp.task('default', ['sass']);
 
