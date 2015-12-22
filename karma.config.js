@@ -4,19 +4,19 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      '../www/lib/ionic/js/ionic.bundle.min.js',
-      '../www/lib/angular-ui-router/release/angular-ui-router.min.js',
-      '../www/lib/angular-mocks/angular-mocks.js'
-      '../www/app/app.js',
-      '../www/app/*.js',
+      'www/lib/ionic/js/ionic.bundle.min.js',
+      'www/lib/angular-ui-router/release/angular-ui-router.min.js',
+      'www/lib/angular-mocks/angular-mocks.js',
+      'www/app/app.js',
+      'www/app/*.js',
 
-      '../www/app/login/module.js',
-      '../www/app/login/*.js',
+      'www/app/login/module.js',
+      'www/app/login/*.js',
 
-      '**/*.spec.js'
+      'tests/**/*.spec.js'
     ],
     preprocessors: {
-      '../www/app/login/controller.js': ['coverage']
+      'www/app/login/controller.js': ['coverage']
     },
     coverageReporter: {
       type : 'html',
