@@ -5,16 +5,18 @@
     .module('musicHack.login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = [];
+  LoginCtrl.$inject = ['$state'];
 
   /* @ngInject */
-  function LoginCtrl() {
+  function LoginCtrl($state) {
     var vm = this;
 
-    activate();
+    vm.user = {};
 
-    function activate() {
+    vm.authenticate = authenticate;
 
-      }
+    function authenticate() {
+      $state.go('side.home');
+    }
   }
 })();

@@ -5,16 +5,17 @@
     .module('musicHack.register')
     .controller('RegisterCtrl', RegisterCtrl);
 
-  RegisterCtrl.$inject = [];
+  RegisterCtrl.$inject = ['$state'];
 
   /* @ngInject */
-  function RegisterCtrl() {
+  function RegisterCtrl($state) {
     var vm = this;
+    vm.user = {};
 
-    activate();
+    vm.createAccount = createAccount;
 
-    function activate() {
-
+    function createAccount() {
+      $state.go('side.home');
     }
   }
 })();

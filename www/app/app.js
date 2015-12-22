@@ -6,6 +6,8 @@
       'ionic',
 
       'musicHack.login',
-      'musicHack.register'
+      'musicHack.auth',
+      'musicHack.register',
+      'musicHack.home'
     ]);
 })();

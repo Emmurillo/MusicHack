@@ -20,15 +20,13 @@
 
   </head>
   <body ng-app="musicHack">
-    
+
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
 
     <ion-nav-view></ion-nav-view>
-
-    <!-- your app's js -->
 
     <!-- Main App -->
     <script src="app/app.js"></script>
@@ -39,9 +37,21 @@
     <script src="app/login/module.js"></script>
     <script src="app/login/controller.js"></script>
 
+    <!-- Authentication -->
+    <script src="app/auth/module.js"></script>
+    <script src="app/auth/service.js"></script>
+
     <!-- Register -->
     <script src="app/register/module.js"></script>
     <script src="app/register/controller.js"></script>
+
+    <!-- Menu -->
+    <script src="app/menu/auth-side-menu.controller.js"></script>
+
+    <!-- Home -->
+    <script src="app/home/module.js"></script>
+    <script src="app/home/controller.js"></script>
+
 
   </body>
 </html>
