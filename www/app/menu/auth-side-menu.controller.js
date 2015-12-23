@@ -5,15 +5,16 @@
     .module('musicHack')
     .controller('SideMenuCtrl', SideMenuCtrl);
 
-  SideMenuCtrl.$inject = ['$state'];
+  SideMenuCtrl.$inject = ['$state', '$localStorage'];
 
   /* @ngInject */
-  function SideMenuCtrl($state) {
+  function SideMenuCtrl($state, $localStorage) {
     var vm = this;
 
-    vm.logout = logout
+    vm.logOut = logOut
 
-    function logout() {
+    function logOut() {
+      $localStorage.$reset();
       $state.go('tabs.login');
     }
   }

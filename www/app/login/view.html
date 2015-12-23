@@ -1,18 +1,17 @@
 <ion-view view-title="Log In">
   <ion-content class="padding">
-    <form ng-submit="vm.authenticate()">
+    <form name="login" autocomplete="off" ng-submit="vm.authenticate()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="vm.user.username">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="vm.user.email" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="vm.user.password">
+          <input type="password" name="password" ng-model="vm.user.password" required>
         </label>
         <label class="item">
-          <button class="button button-block button-dark" type="submit" ng-click="vm.authenticate()">Log In</button>
-          <button class="button button-block button-positive icon-left ion-social-facebook" ng-click="vm.authenticate()">Facebook</button>
+          <button class="button button-block button-dark" type="submit" on-click="vm.authenticate()" ng-disabled="login.$invalid">Log In</button>
         </label>
       </div>
     </form>

@@ -1,25 +1,21 @@
 <ion-view view-title="New User">
   <ion-content class="padding">
-    <form ng-submit="vm.createAccount()">
+    <form name="register" autocomplete="off" ng-submit="vm.createAccount()">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Email</span>
-          <input type="email" ng-model="vm.user.email">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="vm.user.username">
+          <input type="email" ng-model="vm.user.email" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="vm.user.password">
+          <input type="password" ng-model="vm.user.password" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Confirm Password</span>
-          <input type="password" ng-model="vm.user.passwordConfirm">
+          <input type="password" ng-model="vm.passwordConfirm" required ng-pattern="{{ vm.user.password }}">
         </label>
         <label class="item">
-          <button class="button button-block button-assertive" type="submit" ng-click="vm.createAccount()">Create Account</button>
+          <button class="button button-block button-assertive" type="submit" on-click="vm.createAccount()" ng-disabled="register.$invalid">Create Account</button>
         </label>
       </div>
     </form>

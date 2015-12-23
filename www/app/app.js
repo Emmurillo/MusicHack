@@ -5,9 +5,10 @@
     .module('musicHack', [
       'ionic',
       'firebase',
+      'ngStorage',
+      'angular-jwt',
 
       'musicHack.login',
-      'musicHack.auth',
       'musicHack.register',
       'musicHack.home'
     ]);
