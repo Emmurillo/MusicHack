@@ -13,11 +13,13 @@ module.exports = function(config) {
 
       'www/app/login/module.js',
       'www/app/login/*.js',
+      'www/app/register/module.js',
+      'www/app/register/*.js',
 
       'tests/**/*.spec.js'
     ],
     preprocessors: {
-      'www/app/login/controller.js': ['coverage']
+      'www/app/**/*.js': ['coverage']
     },
     coverageReporter: {
       type : 'html',

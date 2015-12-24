@@ -1,6 +1,7 @@
 (function() {
-  describe('LoginCtrl', function(){
+  describe('RegisterCtrl', function(){
     var $this;
+    var RegistrationService;
     var AuthService;
     var $state;
     var $ionicPopup;
@@ -8,10 +9,16 @@
     var $controller;
     var $q;
 
-    beforeEach(module('musicHack.login'));
+    beforeEach(module('musicHack.register'));
     beforeEach(module('ui.router'));
     beforeEach(module('ionic'));
     beforeEach(module('ngStorage'));
+
+    beforeEach(module(function ($provide) {
+      $provide.service('RegistrationService', function () {
+        this.createUser = function (user) {};
+      });
+    }));
 
     beforeEach(module(function ($provide) {
       $provide.service('AuthService', function () {
@@ -19,9 +26,10 @@
       });
     }));
 
-    beforeEach(inject(function (_$controller_, _$q_, _AuthService_, _$state_, _$ionicPopup_, _$localStorage_) {
+    beforeEach(inject(function (_$controller_, _$q_, _RegistrationService_, _AuthService_, _$state_, _$ionicPopup_, _$localStorage_) {
       $q = _$q_;
       $controller = _$controller_;
+      RegistrationService = _RegistrationService_;
       AuthService = _AuthService_;
       $state = _$state_;
       $ionicPopup = _$ionicPopup_;
@@ -29,7 +37,8 @@
     }));
 
     beforeEach(function () {
-      $this = $controller('LoginCtrl', {
+      $this = $controller('RegisterCtrl', {
+        RegistrationService: RegistrationService,
         AuthService: AuthService,
         $state: $state,
         $ionicPopup: $ionicPopup,
@@ -42,13 +51,13 @@
       expect($this.user).toEqual({});
     });
 
-    it("Should call auth service when logging in", function () {
+    it("Should call auth service when creating account", function () {
       var deferredSuccess = $q.defer();
-      spyOn(AuthService, 'authWithPassword').and.returnValue(deferredSuccess.promise);
+      spyOn(RegistrationService, 'createUser').and.returnValue(deferredSuccess.promise);
       $this.user = { email: 'foo', password: '12345678' };
-      $this.authenticate();
-      expect(AuthService.authWithPassword).toHaveBeenCalled();
-      expect(AuthService.authWithPassword).toHaveBeenCalledWith($this.user);
+      $this.createAccount();
+      expect(RegistrationService.createUser).toHaveBeenCalled();
+      expect(RegistrationService.createUser).toHaveBeenCalledWith($this.user);
       deferredSuccess.resolve();
     });
 
