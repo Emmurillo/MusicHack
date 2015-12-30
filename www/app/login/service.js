@@ -11,6 +11,7 @@
   function AuthService($firebaseAuth, env, $localStorage, jwtHelper) {
     this.isAuthenticated = isAuthenticated;
     this.authWithPassword = authWithPassword;
+    this.authWithFacebook = authWithFacebook;
 
     var ref = new Firebase(env.firebaseApiUrl);
     var authProvider = $firebaseAuth(ref);
@@ -25,6 +26,10 @@
 
     function authWithPassword(credentials) {
       return authProvider.$authWithPassword(credentials);
+    }
+
+    function authWithFacebook() {
+      return authProvider.$authWithOAuthPopup('facebook');
     }
   }
 })();

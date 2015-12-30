@@ -14,11 +14,27 @@
     vm.user = {};
 
     vm.authenticate = authenticate;
+    vm.authWithFacebook = authWithFacebook;
 
     function authenticate() {
       AuthService.authWithPassword(vm.user)
         .then(handleAuthSuccess)
         .catch(handleAuthError);
+    }
+
+    function authWithFacebook() {
+      AuthService.authWithFacebook()
+        .then(handleFacebookAuthSuccess)
+        .catch(handleAuthError);
+    }
+
+    function handleFacebookAuthSuccess(authData) {
+      $ionicPopup.alert({
+        title: 'Welcome',
+        template: 'Logged In as ' + authData.facebook.displayName
+      });
+      vm.user = {};
+      $state.go('side.home');
     }
 
     function handleAuthSuccess(authData) {

@@ -21,7 +21,10 @@
     }));
 
     beforeEach(module(function ($provide) {
-      authProvider = { $authWithPassword: function (credentials) {} };
+      authProvider = {
+        $authWithPassword: function (credentials) {},
+        $authWithOAuthPopup: function (provider) {}
+      };
       $provide.value('$firebaseAuth', function (ref) {
         return authProvider
       });
@@ -73,6 +76,12 @@
       spyOn(authProvider, '$authWithPassword');
       AuthService.authWithPassword(null);
       expect(authProvider.$authWithPassword).toHaveBeenCalled();
+    });
+
+    it("Should call facebook auth API", function () {
+      spyOn(authProvider, '$authWithOAuthPopup');
+      AuthService.authWithFacebook('facebook');
+      expect(authProvider.$authWithOAuthPopup).toHaveBeenCalled();
     });
 
     afterEach(function () {

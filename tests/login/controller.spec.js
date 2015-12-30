@@ -16,6 +16,7 @@
     beforeEach(module(function ($provide) {
       $provide.service('AuthService', function () {
         this.authWithPassword = function (user) {};
+        this.authWithFacebook = function () {};
       });
     }));
 
@@ -49,6 +50,14 @@
       $this.authenticate();
       expect(AuthService.authWithPassword).toHaveBeenCalled();
       expect(AuthService.authWithPassword).toHaveBeenCalledWith($this.user);
+      deferredSuccess.resolve();
+    });
+
+    it("Should call facebook auth service when logging in from facebook", function () {
+      var deferredSuccess = $q.defer();
+      spyOn(AuthService, 'authWithFacebook').and.returnValue(deferredSuccess.promise);
+      $this.authWithFacebook();
+      expect(AuthService.authWithFacebook).toHaveBeenCalled();
       deferredSuccess.resolve();
     });
 
