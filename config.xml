@@ -17,4 +17,8 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <plugin name="cordova-plugin-inappbrowser" spec="~1.1.1"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.2.0"/>
+  <allow-intent href="*.firebaseio.com"/>
+  <allow-intent href="auth.firebase.com"/>
 </widget>
