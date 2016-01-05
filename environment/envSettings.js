@@ -4,6 +4,7 @@
   angular
     .module('musicHack')
     .constant('env', {
+      facebookAppID: '729281253870354',
       // @if ENV == 'DEVELOPMENT'
       firebaseApiUrl: 'https://mhdev.firebaseio.com/'
       // @endif
