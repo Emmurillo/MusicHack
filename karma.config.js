@@ -8,6 +8,9 @@ module.exports = function(config) {
       'www/lib/angular-ui-router/release/angular-ui-router.min.js',
       'www/lib/angular-mocks/angular-mocks.js',
       'www/lib/ngstorage/ngStorage.min.js',
+      'www/lib/angular-jwt/dist/angular-jwt.min.js',
+      'www/lib/firebase/firebase.js',
+      'www/lib/angularfire/dist/angularfire.min.js',
       'www/app/app.js',
       'www/app/*.js',
 
