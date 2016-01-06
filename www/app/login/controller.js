@@ -5,10 +5,10 @@
     .module('musicHack.login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['AuthService', '$state', '$ionicPopup', '$localStorage'];
+  LoginCtrl.$inject = ['AuthService', '$state', '$ionicPopup', '$ionicLoading', '$localStorage'];
 
   /* @ngInject */
-  function LoginCtrl(AuthService, $state, $ionicPopup, $localStorage) {
+  function LoginCtrl(AuthService, $state, $ionicPopup, $ionicLoading, $localStorage) {
     var vm = this;
 
     vm.user = {};
@@ -17,15 +17,23 @@
     vm.authWithFacebook = authWithFacebook;
 
     function authenticate() {
+      displayWaitModal();
       AuthService.authWithPassword(vm.user)
         .then(handleAuthSuccess)
         .catch(handleAuthError);
     }
 
     function authWithFacebook() {
+      displayWaitModal();
       AuthService.authWithFacebook()
         .then(handleFacebookAuthSuccess)
         .catch(handleAuthError);
+    }
+
+    function displayWaitModal() {
+      $ionicLoading.show({
+        template: 'Ingresando...'
+      });
     }
 
     function handleFacebookAuthSuccess(authData) {
@@ -34,6 +42,7 @@
         template: 'Logged In as ' + authData.facebook.displayName
       });
       vm.user = {};
+      $ionicLoading.hide();
       $state.go('side.home');
     }
 
@@ -41,9 +50,10 @@
       saveAuthData(authData);
       $ionicPopup.alert({
         title: 'Welcome',
-        template: 'Logged In as ' + authData.password.email
+        template: 'Has ingresado como ' + authData.password.email
       });
       vm.user = {};
+      $ionicLoading.hide();
       $state.go('side.home');
     }
 
@@ -56,6 +66,7 @@
     }
 
     function handleAuthError(error) {
+      $ionicLoading.hide();
       $ionicPopup.alert({
         title: 'Authentication error',
         template: error

@@ -31,14 +31,23 @@
         url: '/home',
         views: {
           'menuContent': {
-            templateUrl: 'app/home/view.html',
+            templateUrl: 'app/home/places/list.html',
             controller: 'HomeCtrl',
             controllerAs: 'vm'
           }
         }
+      })
+      .state('side.detail', {
+        url: '/detail',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/home/places/detail.html',
+            controller: 'PlacesDetailCtrl',
+            controllerAs: 'vm'
+          }
+        }
       });
-      
-      $urlRouterProvider.otherwise('/login');
 
+      $urlRouterProvider.otherwise('/login');
     }
 })();

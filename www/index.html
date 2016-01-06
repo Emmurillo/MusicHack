@@ -6,6 +6,8 @@
     <title></title>
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- endinject -->
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -16,6 +18,16 @@
     <script src="cordova.js"></script>
 
     <!-- inject:js -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/angularfire/dist/angularfire.js"></script>
+    <script src="lib/ionic/js/ionic.js"></script>
+    <script src="lib/ionic/js/ionic-angular.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
     <!-- endinject -->
 
   </head>
@@ -48,7 +60,8 @@
 
     <!-- Home -->
     <script src="app/home/module.js"></script>
-    <script src="app/home/controller.js"></script>
+    <script src="app/home/places/list.controller.js"></script>
+    <script src="app/home/places/detail.controller.js"></script>
 
 
   </body>
