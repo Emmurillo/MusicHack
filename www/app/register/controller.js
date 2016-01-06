@@ -36,7 +36,7 @@
       saveAuthData(authData);
       $ionicPopup.alert({
         title: 'Welcome',
-        template: 'You can now log in as ' + authData.password.email
+        template: 'Ya puedes iniciar sesión como ' + authData.password.email
       });
       vm.user = {};
       vm.passwordConfirm = null;
