@@ -1,5 +1,5 @@
-<ion-view view-title="Log In">
-  <ion-content class="padding">
+<ion-view view-title="Iniciar sesión">
+  <ion-content class="padding-top">
     <form name="login" autocomplete="off" ng-submit="vm.authenticate()">
       <div class="list">
         <label class="item item-input">
@@ -7,14 +7,17 @@
           <input type="email" name="email" ng-model="vm.user.email" required>
         </label>
         <label class="item item-input">
-          <span class="input-label">Password</span>
+          <span class="input-label">Contraseña</span>
           <input type="password" name="password" ng-model="vm.user.password" required>
         </label>
         <label class="item">
-          <button class="button button-block button-dark" type="submit" on-click="vm.authenticate()" ng-disabled="login.$invalid">Log In</button>
+          <button class="button button-block button-dark" type="submit" on-click="vm.authenticate()" ng-disabled="login.$invalid">Iniciar Sesión</button>
         </label>
       </div>
     </form>
-    <a href="" class="button button-block button-positive icon-left ion-social-facebook" ng-click="vm.authWithFacebook()">With Your Facebook Account</a>
+    <div class="padding">
+      <a href="" class="button button-block button-positive icon-left ion-social-facebook" ng-click="vm.authWithFacebook()">Facebook</a>
+      <a ui-sref="register" class="button button-block button-outline button-positive">Crea tu cuenta</a>
+    </div>
   </ion-content>
 </ion-view>
