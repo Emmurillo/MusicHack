@@ -10,18 +10,21 @@
   /* @ngInject */
   function RegisterCtrl(RegistrationService, AuthService, $state, $ionicPopup, $localStorage) {
     var vm = this;
-    vm.user = {};
+    vm.user = {
+      credentials: {},
+      info: {}
+    };
 
     vm.createAccount = createAccount;
 
     function createAccount() {
-      RegistrationService.createUser(vm.user)
+      RegistrationService.createUser(vm.user.credentials)
         .then(handleCreationSuccess)
         .catch(handleCreationError);
     }
 
     function handleCreationSuccess(userData) {
-      AuthService.authWithPassword(vm.user)
+      AuthService.authWithPassword(vm.user.credentials)
         .then(handleAuthSuccess);
     }
 
@@ -50,5 +53,24 @@
         template: error
       });
     }
+
+    var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    var days = ['D', 'L', 'K', 'M', 'J', 'V', 'S'];
+    vm.datePickerConfig = {
+      titleLabel: 'Fecha de Nacimiento',
+      todayLabel: 'Hoy',
+      closeLabel: 'Cerrar',
+      setLabel: 'Seleccionar',
+      weekDaysList: days,
+      monthList: months,
+      mondayFirst: true,
+      from: new Date(1900, 1, 1),
+      to: new Date(),
+      callback: function (selectedDate) {
+        if (selectedDate)
+          vm.user.info.birthDay = selectedDate;
+        },
+      dateFormat: 'dd/MM/yyyy'
+    };
   }
 })();
