@@ -15,7 +15,7 @@
 
     function logOut() {
       $localStorage.$reset();
-      $state.go('tabs.login');
+      $state.go('login');
     }
   }
 })();
