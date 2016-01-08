@@ -10,5 +10,10 @@
     "ngstorage": "~0.3.10",
     "angular-jwt": "~0.0.9",
     "ionic-datepicker": "~0.9.0"
-  }
+  },
+    "overrides": {
+        "angular": {
+          "ignore": true
+        }
+    }
 }

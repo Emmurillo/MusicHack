@@ -8,10 +8,34 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var karma = require('karma');
 var preprocess = require('gulp-preprocess');
+var inject = require('gulp-inject');
+var gulpSync = require('gulp-sync')(gulp);
+var mainBowerFiles = require('main-bower-files');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  css: ['./www/lib/ionic/css/ionic.css', './www/css/*.css']
 };
+
+gulp.task('css', function () {
+  var target = gulp.src('./www/index.html');
+  var sources = gulp.src(paths.css, {read: false});
+
+  return target
+          .pipe(inject(sources, {relative: true}))
+          .pipe(gulp.dest('./www'));
+});
+
+gulp.task('js', function () {
+  var target = gulp.src('./www/index.html');
+  var sources = gulp.src(mainBowerFiles(), {read: false});
+
+  return target
+          .pipe(inject(sources, {relative: true}))
+          .pipe(gulp.dest('./www'));
+});
+
+gulp.task('inject', gulpSync.sync(['js', 'css']));
 
 gulp.task('dev', function() {
   gulp.src('./environment/envSettings.js')
@@ -31,7 +55,7 @@ gulp.task('prod', function() {
     .pipe(gulp.dest('./www/app/'));
 });
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['inject', 'dev']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')

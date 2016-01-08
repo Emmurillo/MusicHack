@@ -2,6 +2,6 @@
   "name": "MusicHack",
   "app_id": "a81d1e6b",
   "gulpDependantTasks": [
-    "dev"
+    "default"
   ]
 }
