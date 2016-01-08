@@ -11,6 +11,7 @@ module.exports = function(config) {
       'www/lib/angular-jwt/dist/angular-jwt.min.js',
       'www/lib/firebase/firebase.js',
       'www/lib/angularfire/dist/angularfire.min.js',
+      'lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js',
       'www/app/app.js',
       'www/app/*.js',
 

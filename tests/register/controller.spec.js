@@ -48,16 +48,17 @@
 
     it("Should be initialized", function () {
       expect($this).toBeDefined();
-      expect($this.user).toEqual({});
+      expect($this.user.credentials).toEqual({});
+      expect($this.user.info).toEqual({});
     });
 
     it("Should call auth service when creating account", function () {
       var deferredSuccess = $q.defer();
       spyOn(RegistrationService, 'createUser').and.returnValue(deferredSuccess.promise);
-      $this.user = { email: 'foo', password: '12345678' };
+      $this.user.credentials = { email: 'foo', password: '12345678' };
       $this.createAccount();
       expect(RegistrationService.createUser).toHaveBeenCalled();
-      expect(RegistrationService.createUser).toHaveBeenCalledWith($this.user);
+      expect(RegistrationService.createUser).toHaveBeenCalledWith($this.user.credentials);
       deferredSuccess.resolve();
     });
 
