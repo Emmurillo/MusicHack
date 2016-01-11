@@ -17,6 +17,10 @@
 
     vm.createAccount = createAccount;
 
+    vm.isPasswordWeak = isPasswordWeak;
+    vm.isPasswordMed = isPasswordMed;
+    vm.isPasswordStrong = isPasswordStrong;
+
     function createAccount() {
       RegistrationService.createUser(vm.user.credentials)
         .then(handleCreationSuccess)
@@ -52,6 +56,18 @@
         title: 'Error',
         template: error
       });
+    }
+
+    function isPasswordWeak() {
+      return vm.passwordStrength < 20;
+    }
+
+    function isPasswordMed() {
+      return vm.passwordStrength > 19 && vm.passwordStrength < 50;
+    }
+
+    function isPasswordStrong() {
+      return vm.passwordStrength > 49;
     }
 
     var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'];
