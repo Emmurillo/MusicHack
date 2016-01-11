@@ -1,0 +1,27 @@
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "www/lib/ionic/scss/ionic";
+
+.error {
+	color: $assertive;
+	font-size: 0.9em;
+}
+
+.password-strength-indicator {
+	height: 20px;
+	background-color: $positive;
+  &.weak {
+    background-color: $assertive;
+  }
+  &.med {
+    background-color: $energized;
+  }
+  &.strong {
+    background-color: $balanced;
+  }
+}
+
+.password-strength-indicator {
+  .progress {
+    display: none;
+  }
+}

@@ -7,7 +7,8 @@
       'firebase',
       'ngStorage',
       'angular-jwt',
-      'ionic-datepicker',    
+      'ionic-datepicker',
+      'ngPasswordStrength',
 
       'musicHack.login',
       'musicHack.register',
