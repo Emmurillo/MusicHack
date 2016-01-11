@@ -33,3 +33,20 @@ gulp test
 ```
 
 > This will also add a `karma-coverage` report under `tests/coverage`.
+
+## Gulp tasks
+
+- `gulp default`: runs dev environment. Used by `ionic serve` as its dependant task.
+- `gulp dev`: sets dev environment.
+- `gulp dev`: sets staging environment.
+- `gulp dev`: sets production environment.
+- `gulp inject`: inject libraries to index.
+- `gulp test`: runs test suite.
+
+>#### To ignore index.html:
+
+>*git update-index --assume-unchanged www/index.html*
+
+>__Important__: if you ever change this files you must remember to uploaded manually!!!
+
+>*git update-index --no-assume-unchanged www/index.html*
