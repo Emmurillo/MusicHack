@@ -43,10 +43,14 @@ gulp test
 - `gulp inject`: inject libraries to index.
 - `gulp test`: runs test suite.
 
->#### To ignore index.html:
+>#### To ignore index.html, config.xml and package.json:
 
->*git update-index --assume-unchanged www/index.html*
+>- *git update-index --assume-unchanged www/index.html*
+>- *git update-index --assume-unchanged config.xml*
+>- *git update-index --assume-unchanged package.json*
 
 >__Important__: if you ever change this files you must remember to uploaded manually!!!
 
->*git update-index --no-assume-unchanged www/index.html*
+>- *git update-index --no-assume-unchanged www/index.html*
+>- *git update-index --no-assume-unchanged config.xml*
+>- *git update-index --no-assume-unchanged package.json*
