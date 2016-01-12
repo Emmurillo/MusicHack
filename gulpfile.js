@@ -17,7 +17,7 @@ var paths = {
   css: ['./www/lib/ionic/css/ionic.css', './www/css/*.css']
 };
 
-gulp.task('css', function () {
+gulp.task('css', ['sass'], function () {
   var target = gulp.src('./www/index.html');
   var sources = gulp.src(paths.css, {read: false});
 
@@ -55,7 +55,7 @@ gulp.task('prod', function() {
     .pipe(gulp.dest('./www/app/'));
 });
 
-gulp.task('default', ['sass', 'inject', 'dev']);
+gulp.task('default', ['inject', 'dev']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/style.scss')
