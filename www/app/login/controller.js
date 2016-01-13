@@ -30,8 +30,8 @@
 
     function handleFacebookAuthSuccess(authData) {
       $ionicPopup.alert({
-        title: 'Welcome',
-        template: 'Logged In as ' + authData.facebook.displayName
+        title: 'Bienvenido',
+        template: 'Ha Iniciado sesion: ' + authData.facebook.displayName
       });
       vm.user = {};
       $state.go('side.home');
@@ -40,8 +40,8 @@
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
       $ionicPopup.alert({
-        title: 'Welcome',
-        template: 'Logged In as ' + authData.password.email
+        title: 'Bienvenido',
+        template: 'Ha Iniciado sesion: ' + authData.password.email
       });
       vm.user = {};
       $state.go('side.home');
