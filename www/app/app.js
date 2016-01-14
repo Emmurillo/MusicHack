@@ -9,9 +9,11 @@
       'angular-jwt',
       'ionic-datepicker',
       'ngPasswordStrength',
+      'ngCordova',
 
       'musicHack.login',
       'musicHack.register',
-      'musicHack.home'
+      'musicHack.home',
+      'musicHack.qrscanner'
     ]);
 })();

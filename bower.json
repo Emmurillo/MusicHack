@@ -11,11 +11,12 @@
     "angular-jwt": "~0.0.9",
     "ionic-datepicker": "~0.9.0",
     "lodash": "~3.10.1",
-    "ng-password-strength": "~0.2.1"
+    "ng-password-strength": "~0.2.1",
+    "ngCordova": "~0.1.23-alpha"
   },
-    "overrides": {
-        "angular": {
-          "ignore": true
-        }
+  "overrides": {
+    "angular": {
+      "ignore": true
     }
+  }
 }

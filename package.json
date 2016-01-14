@@ -24,7 +24,8 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "phonegap-plugin-barcodescanner"
   ],
   "cordovaPlatforms": []
 }
