@@ -36,8 +36,18 @@
             controllerAs: 'vm'
           }
         }
+      })
+      .state('side.qrscanner', {
+        url: '/qrscanner',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/qrscanner/view.html',
+            controller: 'qrScannerCtrl',
+            controllerAs: 'vm'
+          }
+        }
       });
-      
+
       $urlRouterProvider.otherwise('/login');
 
     }

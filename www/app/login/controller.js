@@ -31,20 +31,20 @@
     function handleFacebookAuthSuccess(authData) {
       $ionicPopup.alert({
         title: 'Bienvenido',
-        template: 'Ha Iniciado sesion: ' + authData.facebook.displayName
+        template: 'Ha iniciado sesión como ' + authData.facebook.displayName
       });
       vm.user = {};
-      $state.go('side.home');
+      $state.go('side.qrscanner');
     }
 
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
       $ionicPopup.alert({
         title: 'Bienvenido',
-        template: 'Ha Iniciado sesion: ' + authData.password.email
+        template: 'Ha iniciado sesión como ' + authData.password.email
       });
       vm.user = {};
-      $state.go('side.home');
+      $state.go('side.qrscanner');
     }
 
     function saveAuthData(authData) {
@@ -57,7 +57,7 @@
 
     function handleAuthError(error) {
       $ionicPopup.alert({
-        title: 'Authentication error',
+        title: 'Error de Autentificación',
         template: error
       });
     }

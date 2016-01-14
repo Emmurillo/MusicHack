@@ -1,0 +1,19 @@
+<ion-view view-title="Escanear Código QR">
+  <ion-content>
+    <div class="padding">
+      <a href="" class="button button-block button-stable icon-left ion-ios-camera" type="submit" ng-click="vm.scan()">Escanear Código QR</a>
+    </div>
+
+    <form name="scanCode">
+      <div class="list">
+        <label class="item item-input">
+        <span class="input-label">ID Cliente</span>
+        <input type="text" ng-model="vm.restaurantCode" required>
+        </label>
+      <div class="padding-horizontal">
+        <a href="" class="button button-block button-dark" type="submit" ng-click=""  ng-disabled="scanCode.$invalid">Ingresar con este código</a>
+      </div>
+      </div>
+    </form>
+	</ion-content>
+</ion-view>
