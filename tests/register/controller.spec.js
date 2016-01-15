@@ -9,10 +9,8 @@
     var $controller;
     var $q;
 
+    beforeEach(module('musicHack.common'));
     beforeEach(module('musicHack.register'));
-    beforeEach(module('ui.router'));
-    beforeEach(module('ionic'));
-    beforeEach(module('ngStorage'));
 
     beforeEach(module(function ($provide) {
       $provide.service('RegistrationService', function () {
