@@ -7,6 +7,7 @@
     var env;
     var authProvider;
 
+    beforeEach(module('musicHack.common'));
     beforeEach(module('musicHack.register'));
 
     beforeEach(module(function ($provide) {

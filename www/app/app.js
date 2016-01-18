@@ -3,14 +3,9 @@
 
   angular
     .module('musicHack', [
-      'ionic',
-      'firebase',
-      'ngStorage',
-      'angular-jwt',
-      'ionic-datepicker',
-      'ngPasswordStrength',
-      'ngCordova',
+      'musicHack.common',
 
+      'musicHack.menu',
       'musicHack.login',
       'musicHack.register',
       'musicHack.home',

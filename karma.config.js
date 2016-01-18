@@ -11,9 +11,12 @@ module.exports = function(config) {
       'www/lib/angular-jwt/dist/angular-jwt.min.js',
       'www/lib/firebase/firebase.js',
       'www/lib/angularfire/dist/angularfire.min.js',
-      'lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js',
+      'www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js',
+      'www/lib/ng-password-strength/dist/scripts/ng-password-strength.js',
+      'www/lib/ngCordova/dist/ng-cordova.js',
       'www/app/app.js',
       'www/app/*.js',
+      'www/app/common/module.js',
 
       'www/app/login/module.js',
       'www/app/login/*.js',

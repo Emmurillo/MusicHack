@@ -2,5 +2,7 @@
   'use strict';
 
   angular
-    .module('musicHack.qrscanner', []);
+    .module('musicHack.qrscanner', [
+      'musicHack.common'
+    ]);
 })();

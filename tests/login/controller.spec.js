@@ -8,10 +8,8 @@
     var $controller;
     var $q;
 
+    beforeEach(module('musicHack.common'));
     beforeEach(module('musicHack.login'));
-    beforeEach(module('ui.router'));
-    beforeEach(module('ionic'));
-    beforeEach(module('ngStorage'));
 
     beforeEach(module(function ($provide) {
       $provide.service('AuthService', function () {

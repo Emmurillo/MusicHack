@@ -40,7 +40,7 @@
       });
       vm.user = {};
       vm.passwordConfirm = null;
-      $state.go('side.home');
+      $state.go('menu.home');
     }
 
     function saveAuthData(authData) {

@@ -10,9 +10,8 @@
     var $q;
     var authProvider;
 
+    beforeEach(module('musicHack.common'));
     beforeEach(module('musicHack.login'));
-    beforeEach(module('ngStorage'));
-    beforeEach(module('angular-jwt'));
 
     beforeEach(module(function ($provide) {
       $provide.constant('env', {

@@ -2,5 +2,10 @@
   'use strict';
 
   angular
-    .module('musicHack.register', []);
+    .module('musicHack.register', [
+      'musicHack.common',
+      
+      'ngPasswordStrength',
+      'ionic-datepicker',
+    ]);
 })();

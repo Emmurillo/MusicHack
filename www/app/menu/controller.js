@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('musicHack')
-    .controller('SideMenuCtrl', SideMenuCtrl);
+    .module('musicHack.menu')
+    .controller('MenuCtrl', MenuCtrl);
 
-  SideMenuCtrl.$inject = ['$state', '$localStorage'];
+  MenuCtrl.$inject = ['$state', '$localStorage'];
 
   /* @ngInject */
-  function SideMenuCtrl($state, $localStorage) {
+  function MenuCtrl($state, $localStorage) {
     var vm = this;
 
     vm.logOut = logOut
