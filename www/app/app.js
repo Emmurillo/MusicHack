@@ -8,6 +8,7 @@
       'musicHack.menu',
       'musicHack.login',
       'musicHack.register',
+      'musicHack.places',
       'musicHack.home',
       'musicHack.qrscanner'
     ]);

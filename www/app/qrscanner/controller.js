@@ -5,10 +5,10 @@
     .module('musicHack.qrscanner')
     .controller('qrScannerCtrl', qrscannerCtrl);
 
-  qrscannerCtrl.$inject = ['$cordovaBarcodeScanner', '$ionicPopup'];
+  qrscannerCtrl.$inject = ['$cordovaBarcodeScanner', '$ionicPopup', '$state'];
 
   /* @ngInject */
-  function qrscannerCtrl($cordovaBarcodeScanner, $ionicPopup) {
+  function qrscannerCtrl($cordovaBarcodeScanner, $ionicPopup, $state) {
     var vm = this;
 
     vm.scan = scan;
@@ -22,10 +22,7 @@
 
     function handleScanSuccess (barcodeData) {
       if (!barcodeData.cancelled) {
-        $ionicPopup.alert({
-          title: '¡Muy bien!',
-          template: 'Leiste un código QR ' + barcodeData.text
-        });
+        $state.go('place')
       }
     }
 

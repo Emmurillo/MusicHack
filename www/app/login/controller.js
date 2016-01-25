@@ -53,6 +53,7 @@
         template: 'Ha iniciado sesión como ' + authData.password.email
       });
       vm.user = {};
+      $ionicLoading.hide();
       $state.go('menu.qrscanner');
     }
 
