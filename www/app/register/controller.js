@@ -9,13 +9,16 @@
 
   /* @ngInject */
   function RegisterCtrl(RegistrationService, AuthService, $state, $ionicPopup, $localStorage) {
+
     var vm = this;
+
     vm.user = {
       credentials: {},
       info: {}
     };
 
     vm.createAccount = createAccount;
+    vm.handleAdditionalUserInfo = handleAdditionalUserInfo;
 
     vm.isPasswordWeak = isPasswordWeak;
     vm.isPasswordMed = isPasswordMed;
@@ -23,6 +26,12 @@
 
     function createAccount() {
       RegistrationService.createUser(vm.user.credentials)
+        .then(handleAdditionalUserInfo)
+        .catch(handleCreationError);
+    }
+
+    function handleAdditionalUserInfo() {
+      RegistrationService.createUserAdditionalInfo(vm.user.info)
         .then(handleCreationSuccess)
         .catch(handleCreationError);
     }
@@ -35,12 +44,12 @@
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
       $ionicPopup.alert({
-        title: 'Welcome',
-        template: 'You can now log in as ' + authData.password.email
+        title: 'Bienvenido',
+        template: 'Ahora podés ingresar como ' + authData.password.email
       });
       vm.user = {};
       vm.passwordConfirm = null;
-      $state.go('side.home');
+      $state.go('side.qrscanner');
     }
 
     function saveAuthData(authData) {

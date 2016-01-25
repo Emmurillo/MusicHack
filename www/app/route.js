@@ -46,7 +46,13 @@
             controllerAs: 'vm'
           }
         }
-      });
+      })
+      .state('localregister', {
+       url: '/localregister',
+       templateUrl: 'app/localregister/view.html',
+       controller: 'localRegisterCtrl',
+       controllerAs: 'vm'
+     });
 
       $urlRouterProvider.otherwise('/login');
 

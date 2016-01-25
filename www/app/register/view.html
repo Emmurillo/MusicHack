@@ -26,7 +26,7 @@
           </label>
           <label class="item item-input">
             <span class="input-label">Email</span>
-            <input type="email" name="email" ng-model="vm.user.credentials.email" required>
+            <input type="email" name="email" ng-model="vm.user.credentials.email" ng-change="vm.user.info.email=vm.user.credentials.email" required>
           </label>
           <label class="item" ng-show="(register.email.$touched && register.email.$error.required)">
             <span class="error">Debe ingresar un email</span>
@@ -84,7 +84,7 @@
         </div>
         <div class="padding-horizontal">
           <ionic-datepicker input-obj="vm.datePickerConfig">
-            <a class="button icon-left button-block button-outline button-dark icon ion-ios-calendar-outline"> {{  vm.user.info.birthDay | date:'dd/MM/yyyy' }}</a>
+            <a class="button icon-left button-block button-outline button-dark icon ion-ios-calendar-outline" name="birthDay" ng-model="vm.user.info.birthDay"> {{  vm.user.info.birthDay | date:'dd/MM/yyyy' }}</a>
           </ionic-datepicker>
         </div>
       </div>
