@@ -9,6 +9,8 @@
       'musicHack.login',
       'musicHack.register',
       'musicHack.home',
-      'musicHack.qrscanner'
+      'musicHack.qrscanner',
+      'musicHack.localregister'
+
     ]);
 })();

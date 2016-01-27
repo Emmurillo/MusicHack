@@ -23,9 +23,16 @@
 
     function createAccount() {
       RegistrationService.createUser(vm.user.credentials)
-        .then(handleCreationSuccess)
+        .then(handleAdditionalUserInfo)
         .catch(handleCreationError);
     }
+
+    function handleAdditionalUserInfo() {
+      vm.user.info.email = vm.user.credentials.email;
+      RegistrationService.createUserAdditionalInfo(vm.user.info)
+        .then(handleCreationSuccess)
+        .catch(handleCreationError);
+   }
 
     function handleCreationSuccess(userData) {
       AuthService.authWithPassword(vm.user.credentials)
@@ -35,12 +42,12 @@
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
       $ionicPopup.alert({
-        title: 'Welcome',
-        template: 'You can now log in as ' + authData.password.email
+        title: 'Bienvenido',
+        template: 'Ahora podes ingresar como: ' + authData.password.email
       });
       vm.user = {};
       vm.passwordConfirm = null;
-      $state.go('menu.home');
+      $state.go('menu.qrscanner');
     }
 
     function saveAuthData(authData) {
@@ -84,9 +91,10 @@
       to: new Date(),
       callback: function (selectedDate) {
         if (selectedDate)
-          vm.user.info.birthDay = selectedDate;
+          vm.user.info.birthDay = selectedDate.toDateString();
         },
       dateFormat: 'dd/MM/yyyy'
     };
+
   }
 })();
