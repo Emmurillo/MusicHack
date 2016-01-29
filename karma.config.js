@@ -16,12 +16,10 @@ module.exports = function(config) {
       'www/lib/ngCordova/dist/ng-cordova.js',
       'www/app/app.js',
       'www/app/*.js',
-      'www/app/common/module.js',
+      'www/app/common/*.js',
 
-      'www/app/login/module.js',
-      'www/app/login/*.js',
-      'www/app/register/module.js',
-      'www/app/register/*.js',
+      'www/app/**/module.js',
+      'www/app/**/*.js',
 
       'tests/**/*.spec.js'
     ],
