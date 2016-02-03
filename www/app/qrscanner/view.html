@@ -7,11 +7,11 @@
     <form name="scanCode">
       <div class="list">
         <label class="item item-input">
-        <span class="input-label">ID Cliente</span>
-        <input type="text" ng-model="vm.restaurantCode" required>
+          <span class="input-label">ID Cliente</span>
+          <input type="text" ng-model="vm.localCode" required>
         </label>
       <div class="padding-horizontal">
-        <a href="" class="button button-block button-dark" type="submit" ng-click=""  ng-disabled="scanCode.$invalid">Ingresar con este código</a>
+        <a href="" class="button button-block button-dark" type="submit" ng-click="vm.handleIDInputSuccess(vm.localCode)"  ng-disabled="scanCode.$invalid">Ingresar con este código</a>
       </div>
       </div>
     </form>
