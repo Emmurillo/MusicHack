@@ -12,3 +12,4 @@ www/app/envSettings.js
 www/css/
 
 .idea/
+npm-debug.log
