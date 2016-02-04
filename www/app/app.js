@@ -10,7 +10,10 @@
       'musicHack.register',
       'musicHack.home',
       'musicHack.qrscanner',
-      'musicHack.localregister'
+      'musicHack.localregister',
+      'musicHack.localsetting',
+      'musicHack.mymusic'
+
 
     ]);
 })();

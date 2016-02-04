@@ -1,0 +1,35 @@
+<ion-view view-title="Configuración">
+  <ion-content class="padding">
+
+    <div>
+      <h4>Modo Reprodución</h4>
+      <ion-radio ng-value="'Party'">Modo Fiesta</ion-radio>
+      <ion-radio ng-value="'Credit'">Modo Creditos</ion-radio>
+    </div>
+    <div>
+      <h4>Orden de Reproducción</h4>
+      <ion-radio ng-value="'votos'">Por Votos</ion-radio>
+      <ion-radio ng-value="'entry'">Por Orden de Ingreso</ion-radio>
+    </div>
+
+    <div class="tabs tabs-icon-top">
+      <a class="tab-item" ui-sref="localsetting">
+        <i class="icon ion-ios-cog"></i>
+        Configuración
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-android-contacts"></i>
+        Clientes
+      </a>
+      <a class="tab-item" ui-sref="mymusic">
+        <i class="icon ion-music-note"></i>
+        Mi Música
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-android-chat"></i>
+        Mensajes
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

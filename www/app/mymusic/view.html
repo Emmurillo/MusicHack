@@ -1,0 +1,45 @@
+<ion-view view-title="Mi Música">
+  <ion-content class="padding">
+
+    <ul class="list">
+      <li class="item item-toggle">
+        Modo Libre
+        <label class="toggle toggle-assertive">
+          <input type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+    </ul>
+
+    <ion-list>
+      <h4>Géneros</h4>
+      <ion-checkbox ng-model="filter.roots">Roots</ion-checkbox>
+      <ion-checkbox ng-model="filter.jazz">Jazz</ion-checkbox>
+      <ion-checkbox ng-model="filter.regaeton">Regaeton</ion-checkbox>
+      <ion-checkbox ng-model="filter.rock">Rock</ion-checkbox>
+      <ion-checkbox ng-model="filter.ska">Ska</ion-checkbox>
+    </ion-list>
+
+    <div class="tabs tabs-icon-top">
+      <a class="tab-item" ui-sref="localsetting">
+        <i class="icon ion-ios-cog"></i>
+        Configuración
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-android-contacts"></i>
+        Clientes
+      </a>
+      <a class="tab-item" ui-sref="mymusic">
+        <i class="icon ion-music-note"></i>
+        Mi Música
+      </a>
+      <a class="tab-item">
+        <i class="icon ion-play"></i>
+        Ahora suena
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>
