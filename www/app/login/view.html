@@ -1,4 +1,7 @@
 <ion-view view-title="Iniciar sesión">
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Iniciar Sesión</h1>
+  </ion-header-bar>
   <ion-content class="padding-top">
     <form name="login" autocomplete="off" ng-submit="vm.authenticate()">
       <div class="list">
@@ -18,7 +21,6 @@
     <div class="padding">
       <a href="" class="button button-block button-positive icon-left ion-social-facebook" ng-click="vm.authWithFacebook()">Facebook</a>
       <a ui-sref="register" class="button button-block button-outline button-positive">Crea tu cuenta</a>
-      <a ui-sref="localregister" class="button button-block button-clear button-positive" >Agregá tu local</a>
     </div>
   </ion-content>
 </ion-view>
