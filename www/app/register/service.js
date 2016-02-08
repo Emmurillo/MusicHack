@@ -18,11 +18,17 @@
     function createUser(userInfo) {
       return authProvider.$createUser(userInfo);
     }
-    var authProviderUser = ref.child("user");
-    var authProviderAdditional = authProviderUser.child("userCustomer");
 
-   function createUserAdditionalInfo(userAdditionalInfo) {
-     return authProviderAdditional.push(userAdditionalInfo);
-   }
+    // var authProviderUser = ref.child("user");
+    // var authProviderAdditional = authProviderUser.child("userCustomer");
+    var authProviderAdditional = ref.child("user");
+
+    function createUserAdditionalInfo(userInfo) {
+      var userID = userInfo.uid;
+      var authProviderID = authProviderAdditional.child(userID);
+
+      var userAdditionalInfo = userInfo.info;
+      return authProviderID.set(userAdditionalInfo);
+    }
   }
 })();

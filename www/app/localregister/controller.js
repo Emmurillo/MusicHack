@@ -12,35 +12,35 @@
 
     var vm = this;
     vm.localOwner = {
+      uid: {},
       credentials:{},
       info:{}
     };
+
     vm.createOwnerAccount = createOwnerAccount;
-    vm.handleAdditionalOwerLocalInfo = handleAdditionalOwerLocalInfo
+
     vm.isPasswordWeak = isPasswordWeak;
     vm.isPasswordMed = isPasswordMed;
     vm.isPasswordStrong = isPasswordStrong;
 
     function createOwnerAccount() {
       RegistrationServicelocalOwner.createUser(vm.localOwner.credentials)
-        .then(handleAdditionalOwerLocalInfo)
-        .catch(handleError);
-    }
-
-    function handleAdditionalOwerLocalInfo() {
-      vm.localOwner.info.email = vm.localOwner.credentials.email;
-      RegistrationServicelocalOwner.createOwnerAdditionalInfo(vm.localOwner.info)
         .then(handleCreationSuccess)
         .catch(handleError);
     }
 
     function handleCreationSuccess() {
       AuthService.authWithPassword(vm.localOwner.credentials)
-        .then(handleAuthSuccess);
+        .then(handleAuthSuccess)
+        .catch(handleError);
     }
 
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
+
+      vm.localOwner.uid = authData.uid;
+      handleAdditionalOwerLocalInfo();
+
       $ionicPopup.alert({
         title: 'Bienvenido',
         template: 'Has ingresado como: ' + authData.password.email
@@ -56,6 +56,12 @@
       $localStorage['access_token'] = authData.token;
       $localStorage['email'] = authData.password.email;
       $localStorage['profileImageURL'] = authData.password.profileImageURL;
+    }
+
+    function handleAdditionalOwerLocalInfo() {
+      vm.localOwner.info.email = vm.localOwner.credentials.email;
+      RegistrationServicelocalOwner.createOwnerAdditionalInfo(vm.localOwner)
+        .catch(handleError);
     }
 
     function handleError(error) {

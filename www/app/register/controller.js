@@ -9,8 +9,10 @@
 
   /* @ngInject */
   function RegisterCtrl(RegistrationService, AuthService, $state, $ionicPopup, $localStorage) {
+
     var vm = this;
     vm.user = {
+      uid: {},
       credentials: {},
       info: {}
     };
@@ -23,24 +25,22 @@
 
     function createAccount() {
       RegistrationService.createUser(vm.user.credentials)
-        .then(handleAdditionalUserInfo)
+        .then(handleCreationSuccess)
         .catch(handleCreationError);
     }
 
-    function handleAdditionalUserInfo() {
-      vm.user.info.email = vm.user.credentials.email;
-      RegistrationService.createUserAdditionalInfo(vm.user.info)
-        .then(handleCreationSuccess)
-        .catch(handleCreationError);
-   }
-
     function handleCreationSuccess(userData) {
       AuthService.authWithPassword(vm.user.credentials)
-        .then(handleAuthSuccess);
+        .then(handleAuthSuccess)
+        .catch(handleCreationError);
     }
 
     function handleAuthSuccess(authData) {
       saveAuthData(authData);
+
+      vm.user.uid = authData.uid;
+      handleAdditionalUserInfo();
+
       $ionicPopup.alert({
         title: 'Bienvenido',
         template: 'Ahora podes ingresar como: ' + authData.password.email
@@ -56,6 +56,12 @@
       $localStorage['access_token'] = authData.token;
       $localStorage['email'] = authData.password.email;
       $localStorage['profileImageURL'] = authData.password.profileImageURL;
+    }
+
+    function handleAdditionalUserInfo() {
+      vm.user.info.email = vm.user.credentials.email;
+      RegistrationService.createUserAdditionalInfo(vm.user)
+        .catch(handleCreationError);
     }
 
     function handleCreationError(error) {

@@ -14,14 +14,19 @@
 
     var ref = new Firebase(env.firebaseApiUrl);
     var authlocalOwnerProvider = $firebaseAuth(ref);
-    var authProviderOwner = ref.child("local-owner");
 
     function createUser(credentials) {
       return authlocalOwnerProvider.$createUser(credentials);
     }
 
-    function createOwnerAdditionalInfo(localOwnerAdditionalInfo){
-      return authProviderOwner.push(localOwnerAdditionalInfo);
+    var authProviderOwner = ref.child("local-owner");
+
+    function createOwnerAdditionalInfo(localOwnerInfo){
+      var localOwnerID = localOwnerInfo.uid;
+      var authProviderID = authProviderOwner.child(localOwnerID);
+
+      var localOwnerAdditionalInfo = localOwnerInfo.info;
+      return authProviderID.set(localOwnerAdditionalInfo);
     }
 
   }
