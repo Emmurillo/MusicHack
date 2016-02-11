@@ -5,10 +5,10 @@
     .module('musicHack.login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['AuthService', '$state', '$ionicPopup', '$localStorage'];
+  LoginCtrl.$inject = ['$rootScope', 'AuthService', '$state', '$ionicPopup', '$localStorage'];
 
   /* @ngInject */
-  function LoginCtrl(AuthService, $state, $ionicPopup, $localStorage) {
+  function LoginCtrl($rootScope, AuthService, $state, $ionicPopup, $localStorage) {
     var vm = this;
 
     vm.user = {};
@@ -53,6 +53,7 @@
       $localStorage['access_token'] = authData.token;
       $localStorage['email'] = authData.password.email;
       $localStorage['profileImageURL'] = authData.password.profileImageURL;
+      $rootScope.authenticatedUser = authData;
     }
 
     function handleAuthError(error) {

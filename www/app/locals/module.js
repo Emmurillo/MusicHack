@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('musicHack.myLocals', [
+    .module('musicHack.locals', [
       'musicHack.common',
     ]);
 })();

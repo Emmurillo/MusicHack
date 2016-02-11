@@ -11,6 +11,7 @@
   function RegistrationService($firebaseAuth, env, $firebaseArray) {
     this.createUser = createUser;
     this.createUserAdditionalInfo = createUserAdditionalInfo;
+    this.authWithPassword = authWithPassword;
 
     var ref = new Firebase(env.firebaseApiUrl);
     var authProvider = $firebaseAuth(ref);
@@ -19,8 +20,10 @@
       return authProvider.$createUser(userInfo);
     }
 
-    // var authProviderUser = ref.child("user");
-    // var authProviderAdditional = authProviderUser.child("userCustomer");
+    function authWithPassword(credentials) {
+      return authProvider.$authWithPassword(credentials);
+    }
+
     var authProviderAdditional = ref.child("user");
 
     function createUserAdditionalInfo(userInfo) {

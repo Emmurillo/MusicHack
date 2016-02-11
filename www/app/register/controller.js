@@ -5,10 +5,10 @@
     .module('musicHack.register')
     .controller('RegisterCtrl', RegisterCtrl);
 
-  RegisterCtrl.$inject = ['RegistrationService', 'AuthService', '$state', '$ionicPopup', '$localStorage'];
+  RegisterCtrl.$inject = ['RegistrationService', 'AuthService', '$state', '$ionicPopup', '$localStorage', '$rootScope'];
 
   /* @ngInject */
-  function RegisterCtrl(RegistrationService, AuthService, $state, $ionicPopup, $localStorage) {
+  function RegisterCtrl(RegistrationService, AuthService, $state, $ionicPopup, $localStorage, $rootScope) {
 
     var vm = this;
     vm.user = {
@@ -29,7 +29,7 @@
         .catch(handleCreationError);
     }
 
-    function handleCreationSuccess(userData) {
+    function handleCreationSuccess() {
       AuthService.authWithPassword(vm.user.credentials)
         .then(handleAuthSuccess)
         .catch(handleCreationError);
@@ -56,6 +56,7 @@
       $localStorage['access_token'] = authData.token;
       $localStorage['email'] = authData.password.email;
       $localStorage['profileImageURL'] = authData.password.profileImageURL;
+      $rootScope.authenticatedUser = authData;
     }
 
     function handleAdditionalUserInfo() {
