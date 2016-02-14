@@ -6,7 +6,7 @@
     .constant('env', {
       facebookAppID: '729281253870354',
       youtubeAPIURL: 'https://www.googleapis.com/youtube/v3/search',
-      youtubeAPIKey: 'AIzaSyAnnJ5Melxseh7lEQ-1yd0p8WREUQTQ3po',
+      youtubeAPIKey: 'AIzaSyCKhQLpmI6qErjWWHI9xE0JazWYr6mXMq0',
       // @if ENV == 'DEVELOPMENT'
       firebaseApiUrl: 'https://mhdev.firebaseio.com/'
       // @endif
