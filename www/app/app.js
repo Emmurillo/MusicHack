@@ -10,7 +10,7 @@
       'musicHack.register',
       'musicHack.home',
       'musicHack.qrscanner',
-      'musicHack.localregister',
+      'musicHack.locals',
       'musicHack.musicsearch'
     ]);
 })();

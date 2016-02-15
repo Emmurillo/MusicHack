@@ -34,11 +34,7 @@
 
     function retrieveDataFromLocalID (fetchedID) {
       QRCodeService.fetchLocalFromID(fetchedID)
-        .then(
-          function (fetchedData) {
-            handleFetchDataSuccess (fetchedData);
-          }
-        );
+        .then(handleFetchDataSuccess);
     }
 
     function handleFetchDataSuccess (fetchedData) {
