@@ -5,15 +5,16 @@
     .module('musicHack.menu')
     .controller('MenuCtrl', MenuCtrl);
 
-  MenuCtrl.$inject = ['$state', '$localStorage'];
+  MenuCtrl.$inject = ['$rootScope', '$state', '$localStorage'];
 
   /* @ngInject */
-  function MenuCtrl($state, $localStorage) {
+  function MenuCtrl($rootScope, $state, $localStorage) {
     var vm = this;
 
     vm.logOut = logOut
 
     function logOut() {
+      delete $rootScope.authenticatedUser;
       $localStorage.$reset();
       $state.go('login');
     }
