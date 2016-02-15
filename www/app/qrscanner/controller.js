@@ -5,10 +5,10 @@
     .module('musicHack.qrscanner')
     .controller('qrScannerCtrl', qrscannerCtrl);
 
-  qrscannerCtrl.$inject = ['QRCodeService', '$cordovaBarcodeScanner', '$ionicPopup'];
+  qrscannerCtrl.$inject = ['QRCodeService', '$cordovaBarcodeScanner', '$ionicPopup', '$state'];
 
   /* @ngInject */
-  function qrscannerCtrl(QRCodeService, $cordovaBarcodeScanner, $ionicPopup) {
+  function qrscannerCtrl(QRCodeService, $cordovaBarcodeScanner, $ionicPopup, $state) {
     var vm = this;
 
     vm.scan = scan;
@@ -38,16 +38,29 @@
     }
 
     function handleFetchDataSuccess (fetchedData) {
-      $ionicPopup.alert({
-        title: '¡Muy Bien!',
-        template: 'Has leído el código de ' + fetchedData.localname
-      });
+      if (fetchedData.name){
+        $ionicPopup.alert({
+          title: '¡Muy Bien!',
+          template: 'Has ingresado a ' + fetchedData.name
+        });
+        $state.go('musicsearch');
+      }
+      else {
+        raiseNotFoundError();
+      }
     }
 
     function handleScanError (error) {
       $ionicPopup.alert({
         title: '¡Hubo un problema!',
         template: 'Hubo un error al leer el código QR'
+      });
+    }
+
+    function raiseNotFoundError () {
+      $ionicPopup.alert({
+        title: '¡Hubo un problema!',
+        template: 'El restaurante no está activo en Music Hack'
       });
     }
 
