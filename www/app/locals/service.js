@@ -3,12 +3,22 @@
 
   angular
     .module('musicHack.locals')
-    .service('RegistrationServiceLocals', RegistrationServiceLocals);
+    .service('FetchLocalsService', FetchLocalsService);
 
-  RegistrationServiceLocals.$inject = [];
+  FetchLocalsService.$inject = ['$rootScope', 'env', '$firebaseArray'];
 
   /* @ngInject */
-  function RegistrationServiceLocals() {
+  function FetchLocalsService($rootScope, env, $firebaseArray) {
+    this.fetchLocals = fetchLocals;
 
+    var ref = new Firebase(env.firebaseApiUrl);
+    var refToUser = ref.child("user");
+    var refToUserID = refToUser.child($rootScope.authenticatedUser.uid);
+    var refToLocals = refToUserID.child("locals");
+    var locals = $firebaseArray(refToLocals);
+
+    function fetchLocals() {
+      return locals.$loaded();
+    }
   }
 })();
