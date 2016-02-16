@@ -5,24 +5,18 @@
     .module('musicHack.qrscanner')
     .service('QRCodeService', QRCodeService);
 
-  QRCodeService.$inject = ['$firebaseAuth', 'env', '$firebaseArray', '$q'];
+  QRCodeService.$inject = ['env', '$firebaseObject'];
 
   /* @ngInject */
-  function QRCodeService($firebaseAuth, env, $firebaseArray, $q) {
+  function QRCodeService(env, $firebaseObject) {
 
     this.fetchLocalFromID = fetchLocalFromID;
 
     var ref = new Firebase(env.firebaseApiUrl);
 
     function fetchLocalFromID(localID){
-      var deferredResponse = $q.defer();
-      var localOwnerPath = ref.child("local-owner");
-      var localKeyPath = localOwnerPath.child(localID);
-      localKeyPath.on('value', function (snapshot) {
-          deferredResponse.resolve(snapshot.val());
-        }
-      );
-      return deferredResponse.promise;
+      var localRef = ref.child(localID);
+      return $firebaseObject(localRef).$loaded();
     }
 
   }

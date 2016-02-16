@@ -5,18 +5,19 @@
   .module('musicHack.locals')
   .service('AddLocalService', AddLocalService);
 
-  AddLocalService.$inject = ['$rootScope', '$firebaseAuth', 'env', '$firebaseArray'];
+  AddLocalService.$inject = ['$rootScope', 'env', '$firebaseArray'];
 
   /* @ngInject */
-  function AddLocalService($rootScope, $firebaseAuth, env, $firebaseArray) {
+  function AddLocalService($rootScope, env, $firebaseArray) {
     this.createNewUserLocal = createNewUserLocal;
+
     var ref = new Firebase(env.firebaseApiUrl);
-    var refToUser = ref.child("user");
+    var uid = $rootScope.authenticatedUser.uid;
+    var refToLocals = ref.child("user/" + uid + "/locals");
+    var locals = $firebaseArray(refToLocals);
 
     function createNewUserLocal(localInfo) {
-      var refToUserID = refToUser.child($rootScope.authenticatedUser.uid);
-      var refToLocal = refToUserID.child("locals");
-      return refToLocal.push(localInfo);
+      return locals.$add(localInfo);
     }
   }
 })();

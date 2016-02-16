@@ -12,9 +12,8 @@
     this.fetchLocals = fetchLocals;
 
     var ref = new Firebase(env.firebaseApiUrl);
-    var refToUser = ref.child("user");
-    var refToUserID = refToUser.child($rootScope.authenticatedUser.uid);
-    var refToLocals = refToUserID.child("locals");
+    var uid = $rootScope.authenticatedUser.uid;
+    var refToLocals = ref.child("user/" + uid + "/locals");
     var locals = $firebaseArray(refToLocals);
 
     function fetchLocals() {
