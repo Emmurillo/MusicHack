@@ -5,12 +5,14 @@
     .module('musicHack.locals')
     .controller('LocalsCtrl', LocalsCtrl);
 
-  LocalsCtrl.$inject = ['FetchLocalsService', '$ionicPopup'];
+  LocalsCtrl.$inject = ['FetchLocalsService', '$ionicPopup', '$state'];
 
   /* @ngInject */
-  function LocalsCtrl(FetchLocalsService, $ionicPopup) {
+  function LocalsCtrl(FetchLocalsService, $ionicPopup, $state) {
     var vm = this;
     vm.locals = [];
+
+    vm.goToLocal = goToLocal;
 
     activate();
 
@@ -22,6 +24,10 @@
 
     function handleLocalsFetch(data) {
       vm.locals = data;
+    }
+
+    function goToLocal(localInfo) {
+      $state.go('local', { localID: localInfo.$id });
     }
 
     function handleFetchError() {

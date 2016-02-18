@@ -1,0 +1,33 @@
+<ion-view view-title="Ahora suena">
+  <ion-header-bar align-title="left" class="bar-positive">
+    <div class="buttons">
+      <button class="button ion-chevron-left" ui-sref="menu.locals"></button>
+    </div>
+    <h1 class="title">Ahora suena</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="img/ionic.png">
+        <h2>Pretty Hate Machine</h2>
+        <p>Nine Inch Nails</p>
+      </div>
+
+      <div class="item item-image video-container">
+        <iframe src="https://www.youtube.com/embed/wyVM1evRxNw" frameborder="0"></iframe>
+      </div>
+
+      <a class="item item-icon-left assertive" href="#">
+        <i class="icon ion-music-note"></i>
+        Start listening
+      </a>
+
+    </div>
+    <div class="list">
+      <a class="item" ng-repeat="video in vm.queue">
+        <h2>{{ video.name }}</h2>
+        <p>{{ video.description }}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

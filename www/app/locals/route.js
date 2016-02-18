@@ -18,6 +18,12 @@
         }
       }
     })
+    .state('local', {
+      url: '/local/:localID',
+      templateUrl: 'app/locals/local/view.html',
+      controller: 'VenuePlayerCtrl',
+      controllerAs: 'vm'
+    })
     .state('add', {
       url: '/add',
       templateUrl: 'app/locals/add/view.html',
