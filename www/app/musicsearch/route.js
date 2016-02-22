@@ -9,7 +9,7 @@
 
       $stateProvider
         .state('musicsearch', {
-          url: '/musicsearch',
+          url: '/musicsearch/:venuePath',
           templateUrl: 'app/musicsearch/view.html',
           controller: 'MusicSearchCtrl',
           controllerAs: 'vm'

@@ -14,6 +14,8 @@
     vm.scan = scan;
     vm.handleIDInputSuccess = handleIDInputSuccess;
 
+    var venueFirebasePath;
+
     function scan () {
       $cordovaBarcodeScanner
         .scan()
@@ -22,13 +24,14 @@
       }
 
     function handleScanSuccess (qrcodeData) {
-      var qrcodeDataID = qrcodeData.text;
+      venueFirebasePath = qrcodeData.text;
       if (!qrcodeData.cancelled) {
-        retrieveDataFromLocalID(qrcodeDataID);
+        retrieveDataFromLocalID(venueFirebasePath);
       }
     }
 
     function handleIDInputSuccess (localID) {
+      venueFirebasePath = localID;
       retrieveDataFromLocalID(localID);
     }
 
@@ -43,7 +46,7 @@
           title: '¡Muy Bien!',
           template: 'Has ingresado a ' + fetchedData.name
         });
-        $state.go('musicsearch');
+        $state.go('musicsearch', {venuePath: venueFirebasePath});
       }
       else {
         raiseNotFoundError();

@@ -12,6 +12,7 @@
     var vm = this;
     vm.videos = {};
     vm.search = search;
+    vm.addSongToQueue = addSongToQueue;
 
     function search() {
       SearchService.searchYoutubeAPI(vm.searchQuery)
@@ -27,6 +28,23 @@
       $ionicPopup.alert({
         title: 'Ha ocurrido un error',
         template: error.data.error.message
+      });
+    }
+
+    function addSongToQueue (videoParameters) {
+      var videoInfo = {};
+      videoInfo.videoID = videoParameters.id.videoId;
+      videoInfo.name = videoParameters.snippet.title;
+      videoInfo.description = videoParameters.snippet.description;
+      SearchService.pushVideoIDToVenue(videoInfo)
+        .then(handleSaveSongSuccess)
+        .catch(handleSearchFailure);
+    }
+
+    function handleSaveSongSuccess() {
+      $ionicPopup.alert({
+        title: '¡Muy Bien!',
+        template: 'Has agregado una canción a la lista de reproducción'
       });
     }
   }

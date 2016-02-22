@@ -17,7 +17,7 @@
     </div>
 
     <div class="list">
-      <a class="item item-thumbnail-left" ng-repeat="video in vm.videos">
+      <a class="item item-thumbnail-left" ng-repeat="video in vm.videos" ng-click="vm.addSongToQueue(video)">
         <img ng-src="{{ video.snippet.thumbnails.default.url }}">
         <h2>{{ video.snippet.title }}</h2>
         <p>{{ video.snippet.description }}</p>
