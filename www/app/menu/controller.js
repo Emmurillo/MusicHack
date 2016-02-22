@@ -11,7 +11,7 @@
   function MenuCtrl($rootScope, $state, $localStorage) {
     var vm = this;
 
-    vm.logOut = logOut
+    vm.logOut = logOut;
 
     function logOut() {
       delete $rootScope.authenticatedUser;

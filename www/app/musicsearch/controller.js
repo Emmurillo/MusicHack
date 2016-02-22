@@ -36,6 +36,7 @@
       videoInfo.videoID = videoParameters.id.videoId;
       videoInfo.name = videoParameters.snippet.title;
       videoInfo.description = videoParameters.snippet.description;
+      videoInfo.coverArtURL = videoParameters.snippet.thumbnails.default.url;
       SearchService.pushVideoIDToVenue(videoInfo)
         .then(handleSaveSongSuccess)
         .catch(handleSearchFailure);
