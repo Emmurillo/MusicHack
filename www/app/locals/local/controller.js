@@ -5,13 +5,18 @@
   .module('musicHack.locals')
   .controller('VenuePlayerCtrl', VenuePlayerCtrl);
 
-  VenuePlayerCtrl.$inject = ['$stateParams', 'VenuePlayerService', '$window'];
+  VenuePlayerCtrl.$inject = ['$stateParams', 'VenuePlayerService'];
 
   /* @ngInject */
-  function VenuePlayerCtrl($stateParams, VenuePlayerService, $window) {
+  function VenuePlayerCtrl($stateParams, VenuePlayerService) {
     var vm = this;
     vm.localID = $stateParams.localID;
     vm.queue = [];
+    vm.playVideo = playVideo;
+
+    function playVideo() {
+      VenuePlayerService.onYouTubeIframeAPIReady();
+    }
 
     activate();
 
