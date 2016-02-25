@@ -1,20 +1,18 @@
 (function() {
   'use strict';
-
+  
   angular
     .module('musicHack.musicsearch')
     .service('SearchService', SearchService);
 
-  SearchService.$inject = ['$http', 'env', '$stateParams', '$firebaseArray'];
+  SearchService.$inject = ['$http', 'env', '$stateParams'];
 
   /* @ngInject */
-  function SearchService($http, env, $stateParams, $firebaseArray) {
+  function SearchService($http, env, $stateParams) {
     this.searchYoutubeAPI = searchYoutubeAPI;
     this.pushVideoIDToVenue = pushVideoIDToVenue;
 
     var ref = new Firebase(env.firebaseApiUrl);
-    var videoIDPath = ref.child($stateParams.venuePath + '/queue');
-    var songs = $firebaseArray(videoIDPath);
 
     function searchYoutubeAPI(query) {
       var params = {
@@ -30,7 +28,8 @@
     }
 
     function pushVideoIDToVenue(youTubeVideoInfo) {
-      return songs.$add(youTubeVideoInfo);
+      var videoIDPath = ref.child($stateParams.venuePath + '/queue/'+ youTubeVideoInfo.videoID);
+      return videoIDPath.set(youTubeVideoInfo);
     }
   }
 })();
