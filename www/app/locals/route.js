@@ -28,7 +28,8 @@
       url: '/add',
       templateUrl: 'app/locals/add/view.html',
       controller: 'AddLocalCtrl',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      cache: false
     });
   }
 })();
