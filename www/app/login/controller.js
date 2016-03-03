@@ -59,7 +59,7 @@
     function handleAuthError(error) {
       $ionicPopup.alert({
         title: 'Error de Autentificación',
-        template: error
+        template: 'La contraseña o el usuario ingresados no son correctos'
       });
     }
   }
