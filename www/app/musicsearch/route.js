@@ -12,7 +12,8 @@
           url: '/musicsearch/:venuePath',
           templateUrl: 'app/musicsearch/view.html',
           controller: 'MusicSearchCtrl',
-          controllerAs: 'vm'
+          controllerAs: 'vm',
+          cache: false
         });
     }
 })();
