@@ -14,7 +14,7 @@
 
     var ref = new Firebase(env.firebaseApiUrl);
 
-    function fetchLocalFromID(localID){
+    function fetchLocalFromID(localID) {
       var localRef = ref.child(localID);
       return $firebaseObject(localRef).$loaded();
     }

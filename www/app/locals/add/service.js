@@ -13,7 +13,7 @@
 
     var ref = new Firebase(env.firebaseApiUrl);
     var uid = $rootScope.authenticatedUser.uid;
-    var refToLocals = ref.child("user/" + uid + "/locals");
+    var refToLocals = ref.child('user/' + uid + '/locals');
     var locals = $firebaseArray(refToLocals);
 
     function createNewUserLocal(localInfo) {

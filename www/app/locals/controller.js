@@ -27,7 +27,7 @@
     }
 
     function goToLocal(localInfo) {
-      $state.go('local', { localID: localInfo.$id });
+      $state.go('local', {localID: localInfo.$id});
     }
 
     function handleFetchError() {

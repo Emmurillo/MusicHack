@@ -5,7 +5,8 @@
   .module('musicHack.locals')
   .service('VenuePlayerService', VenuePlayerService);
 
-  VenuePlayerService.$inject = ['$rootScope', 'env', '$firebaseArray', '$stateParams'];
+  VenuePlayerService.$inject = ['$rootScope', 'env',
+                                '$firebaseArray', '$stateParams'];
 
   /* @ngInject */
   function VenuePlayerService($rootScope, env, $firebaseArray, $stateParams) {
@@ -33,12 +34,13 @@
 
     function firebaseObjectToArray(venueInfo) {
       musicFirebaseObject = getSynchronizedArray(venueInfo);
-      upcomingFirebaseSongs = Object.keys(musicFirebaseObject).map(function (key) {return musicFirebaseObject[key]});
+      upcomingFirebaseSongs = Object.keys(musicFirebaseObject).map
+                            (function(key) {return musicFirebaseObject[key];});
       return upcomingFirebaseSongs;
     }
 
     function getSynchronizedArray(venueID) {
-      pathToQueue = "user/" + uid + "/locals/" + venueID + "/queue";
+      pathToQueue = 'user/' + uid + '/locals/' + venueID + '/queue';
       refToQueue = ref.child(pathToQueue);
       var list = [];
       syncChanges(list, refToQueue);
@@ -56,14 +58,14 @@
 
       ref.on('child_removed', function _remove(snap) {
         var i = positionFor(list, snap.key());
-        if( i > -1 ) {
+        if (i > -1) {
           list.splice(i, 1);
         }
       });
 
       ref.on('child_changed', function _change(snap) {
         var i = positionFor(list, snap.key());
-        if( i > -1 ) {
+        if (i > -1) {
           list[i] = snap.val();
           list[i].$id = snap.key();
         }
@@ -71,7 +73,7 @@
 
       ref.on('child_moved', function _move(snap, prevChild) {
         var curPos = positionFor(list, snap.key());
-        if( curPos > -1 ) {
+        if (curPos > -1) {
           var data = list.splice(curPos, 1)[0];
           var newPos = positionAfter(list, prevChild);
           list.splice(newPos, 0, data);
@@ -80,8 +82,8 @@
     }
 
     function positionFor(list, key) {
-      for(var i = 0, len = list.length; i < len; i++) {
-        if( list[i].$id === key ) {
+      for (var i = 0, len = list.length; i < len; i++) {
+        if (list[i].$id === key) {
           return i;
         }
       }
@@ -89,16 +91,14 @@
     }
 
     function positionAfter(list, prevChild) {
-      if( prevChild === null ) {
+      if (prevChild === null) {
         return 0;
-      }
-      else {
+      }else {
         var i = positionFor(list, prevChild);
-        if( i === -1 ) {
+        if (i === -1) {
           return list.length;
-        }
-        else {
-          return i+1;
+        }else {
+          return i + 1;
         }
       }
     }
@@ -125,7 +125,8 @@
     function onPlayerReady(event) {
       upcomingSongs = firebaseObjectToArray($stateParams.localID);
       service.nowPlaying = upcomingSongs[actualSong];
-      eraseSongFromArray($stateParams.localID, upcomingSongs[actualSong].videoID);
+      eraseSongFromArray($stateParams.localID,
+                         upcomingSongs[actualSong].videoID);
       upcomingSongs.splice(0, 1);
       event.target.playVideo();
     }
@@ -133,8 +134,10 @@
     function onPlayerStateChange(event) {
       if (event.data == YT.PlayerState.ENDED) {
         upcomingSongs = firebaseObjectToArray($stateParams.localID);
-        launchNextSong(upcomingSongs[actualSong].videoID, upcomingSongs[actualSong].name);
-        eraseSongFromArray($stateParams.localID, upcomingSongs[actualSong].videoID);
+        launchNextSong(upcomingSongs[actualSong].videoID,
+                       upcomingSongs[actualSong].name);
+        eraseSongFromArray($stateParams.localID,
+                           upcomingSongs[actualSong].videoID);
         upcomingSongs.splice(0, 1);
       }
       if (event.data == YT.PlayerState.PAUSED) {
@@ -149,7 +152,7 @@
     }
 
     function fetchQueue(localID) {
-      pathToQueue = "user/" + uid + "/locals/" + localID + "/queue";
+      pathToQueue = 'user/' + uid + '/locals/' + localID + '/queue';
       refToQueue = ref.child(pathToQueue);
       var queue = $firebaseArray(refToQueue);
       return queue.$loaded();

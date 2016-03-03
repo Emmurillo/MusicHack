@@ -5,9 +5,9 @@
     .module('musicHack.login')
     .config(setupRoutes);
 
-    function setupRoutes($stateProvider, $urlRouterProvider) {
+  function setupRoutes($stateProvider, $urlRouterProvider) {
 
-      $stateProvider
+    $stateProvider
         .state('login', {
           url: '/login',
           templateUrl: 'app/login/view.html',
@@ -15,7 +15,7 @@
           controllerAs: 'vm'
         });
 
-      $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login');
 
-    }
+  }
 })();

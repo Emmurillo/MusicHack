@@ -4,7 +4,6 @@
   angular
     .module('musicHack.register', [
       'musicHack.common',
-      
       'ngPasswordStrength',
       'ionic-datepicker',
     ]);
