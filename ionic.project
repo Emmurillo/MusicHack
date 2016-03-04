@@ -3,5 +3,9 @@
   "app_id": "c5ae7504",
   "gulpDependantTasks": [
     "default"
+  ],
+  "gulpStartupTasks":[
+    "validate"
   ]
+
 }

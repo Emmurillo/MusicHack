@@ -5,10 +5,12 @@
     .module('musicHack.login')
     .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['$rootScope', 'AuthService', '$state', '$ionicPopup', '$localStorage'];
+  LoginCtrl.$inject = ['$rootScope', 'AuthService',
+                       '$state', '$ionicPopup', '$localStorage'];
 
   /* @ngInject */
-  function LoginCtrl($rootScope, AuthService, $state, $ionicPopup, $localStorage) {
+  function LoginCtrl($rootScope, AuthService,
+                     $state, $ionicPopup, $localStorage) {
     var vm = this;
 
     vm.user = {};
@@ -48,11 +50,11 @@
     }
 
     function saveAuthData(authData) {
-      $localStorage['uid'] = authData.uid;
-      $localStorage['provider'] = authData.provider;
-      $localStorage['access_token'] = authData.token;
-      $localStorage['email'] = authData.password.email;
-      $localStorage['profileImageURL'] = authData.password.profileImageURL;
+      $localStorage.uid = authData.uid;
+      $localStorage.provider = authData.provider;
+      $localStorage.accessToken = authData.token;
+      $localStorage.email = authData.password.email;
+      $localStorage.profileImageURL = authData.password.profileImageURL;
       $rootScope.authenticatedUser = authData;
     }
 

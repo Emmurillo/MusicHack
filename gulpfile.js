@@ -11,6 +11,7 @@ var preprocess = require('gulp-preprocess');
 var inject = require('gulp-inject');
 var gulpSync = require('gulp-sync')(gulp);
 var mainBowerFiles = require('main-bower-files');
+var jscs = require('gulp-jscs');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -104,4 +105,10 @@ gulp.task('test', function(done) {
   }
   var karmaServer = new karma.Server(karmaOptions , doneCallback);
   karmaServer.start();
+});
+
+gulp.task('validate', function(){
+  return gulp.src('www/app/**/*.js')
+  .pipe(jscs())
+  .pipe(jscs.reporter());
 });

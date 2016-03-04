@@ -31,7 +31,7 @@
       });
     }
 
-    function addSongToQueue (videoParameters) {
+    function addSongToQueue(videoParameters) {
       var videoInfo = {};
       videoInfo.videoID = videoParameters.id.videoId;
       videoInfo.name = videoParameters.snippet.title;

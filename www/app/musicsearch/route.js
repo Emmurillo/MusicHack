@@ -5,9 +5,9 @@
     .module('musicHack.musicsearch')
     .config(setupRoutes);
 
-    function setupRoutes($stateProvider) {
+  function setupRoutes($stateProvider) {
 
-      $stateProvider
+    $stateProvider
         .state('musicsearch', {
           url: '/musicsearch/:venuePath',
           templateUrl: 'app/musicsearch/view.html',
@@ -15,5 +15,5 @@
           controllerAs: 'vm',
           cache: false
         });
-    }
+  }
 })();

@@ -5,9 +5,9 @@
     .module('musicHack.register')
     .config(setupRoutes);
 
-    function setupRoutes($stateProvider) {
+  function setupRoutes($stateProvider) {
 
-      $stateProvider
+    $stateProvider
         .state('register', {
           url: '/register',
           templateUrl: 'app/register/view.html',
@@ -15,5 +15,5 @@
           controllerAs: 'vm'
         });
 
-    }
+  }
 })();

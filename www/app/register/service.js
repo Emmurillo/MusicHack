@@ -24,7 +24,7 @@
       return authProvider.$authWithPassword(credentials);
     }
 
-    var authProviderAdditional = ref.child("user");
+    var authProviderAdditional = ref.child('user');
 
     function createUserAdditionalInfo(userInfo) {
       var userID = userInfo.uid;

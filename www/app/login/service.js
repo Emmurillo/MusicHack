@@ -17,11 +17,12 @@
     var authProvider = $firebaseAuth(ref);
 
     function isAuthenticated() {
-      var token = $localStorage['access_token'];
-      if (!token)
+      var token = $localStorage.accessToken;
+      if (!token) {
         return false;
-      else
+      }else {
         return !jwtHelper.isTokenExpired(token);
+      }
     }
 
     function authWithPassword(credentials) {

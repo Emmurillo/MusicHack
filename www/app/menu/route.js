@@ -5,15 +5,15 @@
     .module('musicHack.menu')
     .config(setupRoutes);
 
-    function setupRoutes($stateProvider) {
+  function setupRoutes($stateProvider) {
 
-      $stateProvider
+    $stateProvider
         .state('menu', {
           url: '/menu',
           abstract: true,
           templateUrl: 'app/menu/view.html',
           controller: 'MenuCtrl',
           controllerAs: 'vm'
-        })
-    }
+        });
+  }
 })();

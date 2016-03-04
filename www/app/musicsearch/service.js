@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular
     .module('musicHack.musicsearch')
     .service('SearchService', SearchService);
@@ -15,20 +15,23 @@
     var ref = new Firebase(env.firebaseApiUrl);
 
     function searchYoutubeAPI(query) {
+      var fields = 'items/id,items/snippet/title,items/snippet/description,' +
+        'items/snippet/thumbnails/default,items/snippet/channelTitle';
       var params = {
         key: env.youtubeAPIKey,
         type: 'video',
-        videoCategoryId : '10',
+        videoCategoryId: '10',
         maxResults: '10',
         part: 'id,snippet',
-        fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
+        fields: fields,
         q: query
       };
-      return $http.get(env.youtubeAPIURL, { params: params });
+      return $http.get(env.youtubeAPIURL, {params: params});
     }
 
     function pushVideoIDToVenue(youTubeVideoInfo) {
-      var videoIDPath = ref.child($stateParams.venuePath + '/queue/'+ youTubeVideoInfo.videoID);
+      var videoIDPath = ref.child($stateParams.venuePath + '/queue/' +
+                                  youTubeVideoInfo.videoID);
       return videoIDPath.set(youTubeVideoInfo);
     }
   }

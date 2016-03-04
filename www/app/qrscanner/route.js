@@ -2,21 +2,21 @@
   'use strict';
 
   angular
-    .module('musicHack.qrscanner')
-    .config(setupRoutes);
+  .module('musicHack.qrscanner')
+  .config(setupRoutes);
 
-    function setupRoutes($stateProvider) {
+  function setupRoutes($stateProvider) {
 
-      $stateProvider
-        .state('menu.qrscanner', {
-          url: '/qrscanner',
-          views: {
-            'menuContent': {
-              templateUrl: 'app/qrscanner/view.html',
-              controller: 'qrScannerCtrl',
-              controllerAs: 'vm'
-            }
-          }
-        });
-    }
+    $stateProvider
+    .state('menu.qrscanner', {
+      url: '/qrscanner',
+      views: {
+        'menuContent': {
+          templateUrl: 'app/qrscanner/view.html',
+          controller: 'qrScannerCtrl',
+          controllerAs: 'vm'
+        }
+      }
+    });
+  }
 })();
