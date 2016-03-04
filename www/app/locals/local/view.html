@@ -1,7 +1,7 @@
 <ion-view view-title="Ahora suena">
   <ion-header-bar align-title="left" class="bar-positive">
     <div class="buttons">
-      <button class="button ion-chevron-left" ui-sref="menu.locals"></button>
+      <button class="button ion-chevron-left" ui-sref="menu.locals" ng-click="vm.killPlayer(false)"></button>
     </div>
     <h1 class="title">Ahora suena</h1>
   </ion-header-bar>
@@ -12,10 +12,10 @@
         <div id="player"></div>
       </div>
 
-      <a class="item item-icon-left assertive" href="#" ng-click= "vm.playQueue()">
+      <button class="item item-icon-left assertive" ng-click="vm.playQueue(true)" ng-hide="vm.isPlaying">
         <i class="icon ion-music-note"></i>
         Reproducir lista de canciones
-      </a>
+      </button>
 
     </div>
     <div class="list">

@@ -16,6 +16,7 @@
     service.getSynchronizedArray = getSynchronizedArray;
     service.eraseSongFromArray = eraseSongFromArray;
     service.nowPlaying = {};
+    service.deleteYoutubeIframe = deleteYoutubeIframe;
 
     var ref = new Firebase(env.firebaseApiUrl);
     var uid = $rootScope.authenticatedUser.uid;
@@ -109,6 +110,10 @@
       };
     }
 
+    function deleteYoutubeIframe() {
+      player.destroy();
+    }
+
     function onYouTubeIframeAPIReady(venueID) {
       upcomingSongs = firebaseObjectToArray(venueID);
       var actualVideoId = upcomingSongs[actualSong].videoID;
@@ -139,9 +144,6 @@
         eraseSongFromArray($stateParams.localID,
                            upcomingSongs[actualSong].videoID);
         upcomingSongs.splice(0, 1);
-      }
-      if (event.data == YT.PlayerState.PAUSED) {
-        player.clearVideo();
       }
     }
 

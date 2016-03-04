@@ -13,9 +13,17 @@
     vm.localID = $stateParams.localID;
     vm.queue = [];
     vm.playQueue = playQueue;
+    vm.killPlayer = killPlayer;
+    vm.isPlaying = false;
 
-    function playQueue() {
+    function playQueue(keepPlayer) {
+      vm.isPlaying = keepPlayer;
       VenuePlayerService.onYouTubeIframeAPIReady(vm.localID);
+    }
+
+    function killPlayer(destroyPlayer) {
+      vm.isPlaying = destroyPlayer;
+      VenuePlayerService.deleteYoutubeIframe();
     }
 
     activate();
