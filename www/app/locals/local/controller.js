@@ -15,7 +15,7 @@
     vm.playQueue = playQueue;
 
     function playQueue() {
-      VenuePlayerService.onYouTubeIframeAPIReady();
+      VenuePlayerService.onYouTubeIframeAPIReady(vm.localID);
     }
 
     activate();
@@ -36,5 +36,6 @@
         template: error
       });
     }
+
   }
 })();
