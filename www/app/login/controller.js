@@ -36,7 +36,7 @@
         template: 'Ha iniciado sesión como ' + authData.facebook.displayName
       });
       vm.user = {};
-      $state.go('menu.qrscanner');
+      $state.go('menu.home');
     }
 
     function handleAuthSuccess(authData) {
@@ -46,7 +46,7 @@
         template: 'Ha iniciado sesión como ' + authData.password.email
       });
       vm.user = {};
-      $state.go('menu.qrscanner');
+      $state.go('menu.home');
     }
 
     function saveAuthData(authData) {

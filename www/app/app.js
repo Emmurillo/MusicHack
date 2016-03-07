@@ -6,6 +6,7 @@
       'musicHack.common',
       'musicHack.menu',
       'musicHack.login',
+      'musicHack.home',
       'musicHack.register',
       'musicHack.qrscanner',
       'musicHack.locals',
