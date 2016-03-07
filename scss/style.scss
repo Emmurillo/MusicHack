@@ -1,4 +1,5 @@
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+$desktop: 1020px;
 @import "www/lib/ionic/scss/ionic";
 
 .error {
@@ -40,4 +41,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: $desktop) {
+  .hidden-sm {
+		display:none;
+	}
+}
+
+@media (min-width: $desktop) {
+	.hidden-md {
+		display:none;
+	}
 }
